@@ -185,7 +185,7 @@ pub fn interface_id(interface: &str) -> Result<i32, nix::Error> {
           * and the two variables can never overlap 
           */
         std::ptr::copy_nonoverlapping(cstr.as_ptr(),
-            ifr.ifrn_name.as_ptr() as *mut i8, length);
+            ifr.ifrn_name.as_ptr() as *mut u8, length);
         /*
          * SIOCGIFINDEX doesn't care about the rest of the fields, so this
          * should be safe
