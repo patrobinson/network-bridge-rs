@@ -224,7 +224,7 @@ fn bridge_del_add_if(interface_id: i32, bridge: &str, add: bool)
     unsafe {
         /* copy the bridge name to the ifreq */
         std::ptr::copy_nonoverlapping(br_cstr.as_ptr(),
-            ifr.ifrn_name.as_ptr() as *mut i8, length);
+            ifr.ifrn_name.as_ptr() as *mut u8, length);
 
         if add {
             ioctl_addif(sock, &ifr)
